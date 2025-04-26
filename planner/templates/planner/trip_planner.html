@@ -1,0 +1,55 @@
+{% load form_tags %}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartTripPlanner - Seyahat Planı</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="container py-5">
+        <h1 class="text-center mb-4">SmartTripPlanner</h1>
+    
+        <div class="card shadow p-4 mb-5 bg-white rounded">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.city.label_tag }} 
+                    {{ form.city|add_class:"form-select" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.day_count.label_tag }}
+                    {{ form.day_count|add_class:"form-control" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.budget.label_tag }}
+                    {{ form.budget|add_class:"form-control" }}
+                </div>
+                <div class="mb-3">
+                    {{ form.travel_preference.label_tag }}
+                    {{ form.travel_preference|add_class:"form-select" }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Planla</button>
+            </form>
+        </div>
+    
+        {% if plan %}
+            <div class="card shadow p-4 bg-white rounded">
+                <h2 class="text-center mb-4">Önerilen Seyahat Planı</h2>
+                {% for day, activities in plan.items %}
+                    <h4>{{ day }}</h4>
+                    <ul class="list-group mb-3">
+                        {% for activity in activities %}
+                            <li class="list-group-item">
+                                <strong>{{ activity.isim }}</strong> | {{ activity.sure }} saat | {{ activity.fiyat }} ₺
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>    
