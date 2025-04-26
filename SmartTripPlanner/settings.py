@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-5@znii4fb&8obt(!k9stqdaxptpbaw6+uwo#ii!8b$b+v0ru_6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://smarttripplanner-vksv.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
+
 
 
 
