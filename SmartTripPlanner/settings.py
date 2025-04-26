@@ -77,12 +77,8 @@ WSGI_APPLICATION = 'SmartTripPlanner.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'smarttripplanner',
-        'USER': 'root',
-        'PASSWORD': 'Furkan_1234', 
-        'HOST': 'localhost',
-        'PORT': '3300',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
